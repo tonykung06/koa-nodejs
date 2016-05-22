@@ -7,8 +7,15 @@ const questions = require('../model/Question');
 const request = require('supertest').agent(app.listen());
 const cleanupHelpers = require('./cleanupHelpers');
 
-describe('homepage', () => {
+describe('adding questions', () => {
+	let a_question_form;
+
 	beforeEach(done => {
+		a_question_form = {
+			questionTitle: 'A question?',
+			tagString: 'tag1, tag2, tag3'
+		};
+
 		cleanupHelpers.removeAllQuestions(done);
 	});
 
@@ -16,28 +23,18 @@ describe('homepage', () => {
 		cleanupHelpers.removeAllQuestions(done);
 	});
 
-	it('displays without errors', done => {
-		request.get('/')
+	it('displays a page for adding questions', done => {
+		request.get('/question')
 				.expect(200)
 				.expect('Content-Type', /html/)
 				.end(done);
 	});
 
-	it('list all the questions in the db', done => {
-		co(function* () {
-			yield questions.insert({
-				title: 'Question Q1'
-			});
-			yield questions.insert({
-				title: 'Question Q2'
-			});
-
-			request.get('/')
-					.expect(200)
-					.expect(function(res) {
-						res.text.should.containEql('Question Q1');
-						res.text.should.containEql('Question Q2');
-					}).end(done);
-		});
+	it('stores correct formatted forms as a new question', done => {
+		request.post('/question')
+				.send(a_question_form)
+				.expect(302)
+				.expect('location', /^\/question\/[0-9a-fA-F]{24}$/)
+				.end(done);
 	});
 });

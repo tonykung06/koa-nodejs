@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}New question{% endblock %}
+
+{% block content %}
+	<h1>Create a new question</h1>
+	<form action="/question" name="questionForm" method="post" class="form-horizontal">
+		<div class="form-group">
+			<label for="questionTitle" class="col-sm-2 control-label lead">
+				Question:
+			</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" id="questionTitle" name="questionTitle" placeholder="Question Title..." />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="tagString" class="col-sm-2 control-label lead">
+				Tags:
+			</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" id="tagString" name="tagString" placeholder="Tag..." />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<input type="submit" value="Add question" class="btn btn-primary" />
+			</div>
+		</div>
+	</form>
+{% endblock %}

@@ -4,14 +4,10 @@ const app = require('../app');
 const co = require('co');
 const users = require('../model/User');
 const request = require('supertest').agent(app.listen());
+const cleanupHelpers = require('./cleanupHelpers');
 
 describe('Simple User Http CRUD API', () => {
 	let a_user;
-	const removeAllUsers = done => {
-		co(function* () {
-			yield users.remove({});
-		}).then(done);
-	};
 
 	beforeEach(done => {
 		a_user = {
@@ -20,11 +16,11 @@ describe('Simple User Http CRUD API', () => {
 			height: 1.91
 		};
 
-		removeAllUsers(done);
+		cleanupHelpers.removeAllUsers(done);
 	});
 
 	afterEach(done => {
-		removeAllUsers(done);
+		cleanupHelpers.removeAllUsers(done);
 	});
 
 	it('add a new user', done => {

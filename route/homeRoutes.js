@@ -1,8 +1,13 @@
 const render = require('../lib/render');
 const route = require('koa-route');
+const questions = require('../model/Question');
 
 function* showHome() {
-	this.body = yield render('home');
+	const questionList = yield questions.find({});
+
+	this.body = yield render('home', {
+		questionList
+	});
 }
 
 module.exports = app => {
