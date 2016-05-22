@@ -1,0 +1,32 @@
+{
+  "name": "koa-nodejs",
+  "version": "1.0.0",
+  "description": "try out koa",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonykung06/koa-nodejs.git"
+  },
+  "keywords": [
+    "koa",
+    "demo"
+  ],
+  "author": "Tony Kung",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tonykung06/koa-nodejs/issues"
+  },
+  "homepage": "https://github.com/tonykung06/koa-nodejs#readme",
+  "dependencies": {
+    "co-body": "^4.2.0",
+    "co-monk": "^1.0.0",
+    "koa": "^1.2.0",
+    "koa-route": "^2.4.2",
+    "mongodb": "^1.4.40",
+    "monk": "^1.0.1"
+  }
+}
