@@ -49,4 +49,6 @@ module.exports = app => {
 	app.use(route.get('/user/:id', getUser));
 	app.use(route.put('/user/:id', updateUser));
 	app.use(route.del('/user/:id', deleteUser));
+
+	return app;
 };

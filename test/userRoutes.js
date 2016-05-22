@@ -1,8 +1,8 @@
 'use strict';
 
-const app = require('./app');
+const app = require('../app');
 const co = require('co');
-const users = require('./model/User');
+const users = require('../model/User');
 const request = require('supertest').agent(app.listen());
 
 describe('Simple User Http CRUD API', () => {
