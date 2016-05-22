@@ -1,11 +1,13 @@
 const koa = require('koa');
-const app = koa();
+const serve = require('koa-static');
 const userRoutes = require('./route/userRoutes');
+const homeRoutes = require('./route/homeRoutes');
 
+const app = koa();
+
+app.use(serve(`${__dirname}/public`));
+
+homeRoutes(app);
 userRoutes(app);
-
-// app.use(function* () {
-// 	this.body = 'Hello World!';
-// });
 
 module.exports = app;

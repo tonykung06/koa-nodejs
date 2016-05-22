@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>{% block title %}Title not set{% endblock %}</title>
+		<link rel="stylesheet" href="/bootstrap-superhero.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h3 class="text-muted">Koa vote - a simple voting system</h3>
+			</div>
+			<div class="jumbotron">
+				{% block content %}
+					Content not set
+				{% endblock %}
+			</div>
+		</div>
+	</body>
+</html>
